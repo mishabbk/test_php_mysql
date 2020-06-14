@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task #4</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculation of monthly payment</h1>
+    <form>
+        <div>
+            <label for="credit_sum">Credit Sum:</label>
+            <input type="number" step="0.01" name="credit_sum" id="credit_sum" placeholder="Credit Sum">
+        </div>
+        <div>
+            <label for="month_count">Month Count</label>
+            <input type="number" name="month_count" id="month_count" placeholder="Month Count">
+        </div>
+    </form>
+    <div>
+        <p>
+            Monthly payment amount:
+            <span id="monthly_payment_amount">Enter valid 'Credit Sum' and 'Month Count'</span>
+        </p>
+    </div>
+    <script type="text/javascript">
+        const creditSumInput = document.getElementById("credit_sum"),
+              monthlyCountInput = document.getElementById("month_count"),
+              resultSpan = document.getElementById("monthly_payment_amount");
+
+        creditSumInput.addEventListener("change", calculateMonthlyPaymentAmount);
+        monthlyCountInput.addEventListener("change", calculateMonthlyPaymentAmount);
+        
+        function calculateMonthlyPaymentAmount() {
+            const creditSum = parseFloat(creditSumInput.value).toFixed(2);
+            const monthlyCount = parseInt(monthlyCountInput.value);
+
+            if (creditSum > 0 && monthlyCount > 0) {
+                resultSpan.innerHTML = parseFloat(creditSum / monthlyCount).toFixed(2);
+            } else {
+                resultSpan.innerHTML = 'Enter valid \'Credit Sum\' and \'Month Count\'';
+            }
+        }
+    </script>
+</body>
+</html>
